@@ -24,6 +24,16 @@ class AccountDB:
                 return account
         return None
 
+    def delete(self, account_num):
+        for index in range(len(self.account_database)):
+            if self.account_database[index].account_number == account_num:
+                deleted_account = self.account_database.pop(index)
+                print(f"Deleted account: {deleted_account}")
+                return
+        print(f"Account number {account_num} cant find in database")
+
+
+
     def __str__(self):
         s = ''
         for account in self.account_database:
@@ -62,9 +72,6 @@ my_account_DB.insert(account3)
 my_account_DB.insert(account4)
 my_account_DB.insert(account5)
 print(my_account_DB)
-my_account_DB.search_public("0003").deposit(50)
+my_account_DB.delete(account4.account_number)
 print(my_account_DB)
-my_account_DB.search_public("0003").withdraw(100)
-print(my_account_DB)
-my_account_DB.search_public("0010").deposit(50)
-print(my_account_DB)
+
